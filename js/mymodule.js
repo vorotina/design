@@ -1,3 +1,9 @@
-module.exports = function(){
-    console.log('My module');
-}
+define(
+    'mymodule', //название модуля
+    ['jquery'], //зависимости 
+    function( $ ){ //функция-фабрика, экспортируемые зависимостями переменные в аргументах
+        return { // возвращает модуль 
+            foo : 'bar'
+        };
+    }
+);
