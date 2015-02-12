@@ -2,8 +2,11 @@
   "name": "node-example",
   "version": "0.0.1",
   "dependencies": {
+    "backbone": "^1.1.2",
+    "connect": "2.8.x",
+    "dot": "^1.0.3",
     "express": "3.1.x",
-    "connect": "2.8.x"
+    "underscore": "^1.7.0"
   },
   "engines": {
     "node": "0.10.x",
