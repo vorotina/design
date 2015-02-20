@@ -104,7 +104,9 @@ require(
 		var ListView = Backbone.View.extend({
 			el: $('.grid'), // el attaches to existing element
 			events: {
-			  'click .load-more': 'addItem'
+			  'click .load-more': 'addItem',
+			  'click .load-less': 'hideItems',
+			  'click .load-full': 'showItems',
 			},
 			initialize: function(){
 			  _.bindAll(this, 'render', 'addItem', 'appendItem'); // every function that uses 'this' as the current object should be in here
@@ -122,7 +124,7 @@ require(
 			  // 32 items
 			  	for (this.counter; this.counter < 4; this.counter++) {
 					var compiled = doT.template(gallery_item); 
-					$(this.el).append(compiled({path: this.counter + 1 ,title: 'Yeeeaaa'}));
+					$(this.el).append(compiled({view: 'initial', path: this.counter + 1 ,title: 'Yeeeaaa'}));
 				}
 				$(this.el).append('<div class="load-more"></div>');
 				
@@ -134,10 +136,7 @@ require(
 				  console.log('more');
 				});*/
 				
-				$('.load-more').on('click', '.load-more', function() {
-				  console.log('more');
-				});
-			  
+						  
 			  
 			  //????
 			 /* _(this.collection.models).each(function(item){ // in case collection is not empty
@@ -158,17 +157,29 @@ require(
 				while (this.counter + 1 <= max) {
 				    var stopLoad = (this.counter >= this.galleryItemsAmount);
 				    if (stopLoad) {
-						$(this.el).append('<div>Свернуть работы</div>');
+						$(this.el).append('<div class="load-less">Свернуть работы</div>');
 						return;
 					};
 					var compiled = doT.template(gallery_item); 
-					$(this.el).append(compiled({path: this.counter + 1, title: 'Yeeeaaa'}));
+					$(this.el).append(compiled({view: 'listed', path: this.counter + 1, title: 'Yeeeaaa'}));
 					this.counter++
 				}
 				$(this.el).append('<div class="load-more"></div>');
 			  //this.collection.add(item);
 			},
-
+			hideItems: function(){
+				$('.listed').hide();
+				$('.load-less').remove();
+				$('body,html').animate({
+						scrollTop: 0
+				}, 700);
+				$(this.el).append('<div class="load-full">Показать все работы</div>');
+			},
+			showItems: function(){
+				$('.listed').show();
+				$('.load-full').remove();
+				$(this.el).append('<div class="load-less">Свернуть работы</div>');
+			},
 			appendItem: function(item){
 			  var itemView = new ItemView({
 				model: item

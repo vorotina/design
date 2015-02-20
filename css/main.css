@@ -30,6 +30,7 @@
 		}
 		body {
 			background: #222222;
+			color: #b2b2b2;
 		}
 		.container {
 			padding: 0;
@@ -165,4 +166,17 @@
 		#about,
 		#contacts {
 			padding-top: 80px;
+		}
+		
+		.load-full,
+		.load-less {
+			padding-top: 25px;
+			cursor: pointer;
+			display: table;
+			margin: 0 auto;
+			color: #b2b2b2;
+		}
+		.load-full:hover,
+		.load-less:hover {
+		text-decoration: underline;
 		}
