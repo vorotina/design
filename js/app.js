@@ -102,6 +102,7 @@ require(
 			  this.collection.bind('add', this.appendItem); // collection event binder
 
 			  this.counter = 0;
+			  this.galleryItemsAmount = 32;
 			  this.render();
 			},
 			render: function(){
@@ -142,10 +143,10 @@ require(
 					path: this.counter, 
 					title: item.get('title')
 				});
-				console.log(this.counter);
-				console.log(max);
+
 				while (this.counter + 1 <= max) {
-				console.log('in loop', this.counter);
+				    var stopLoad = (this.counter >= this.galleryItemsAmount);
+				    if (stopLoad) return;
 					var compiled = doT.template(gallery_item); 
 					$(this.el).append(compiled({path: this.counter + 1, title: 'Yeeeaaa'}));
 					this.counter++
