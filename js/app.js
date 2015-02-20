@@ -31,10 +31,21 @@ require(
 			home : function() {
 			  console.log("yolo");
 			},
-		});		
+		});	
+
+		function scrollToElement(el) {
+			$('body,html').animate({
+					scrollTop: el.offset().top
+			}, 700);
+		}		
 		
-		$('.top-menu li a').click(function(){
-			Router.navigate("home", {trigger: true, replace: true});
+		$('.top-menu li').click(function(e){
+			$('.top-menu li').removeClass('active');
+			//Router.navigate("home", {trigger: true, replace: true});
+			var el = e.currentTarget;
+			$(el).addClass('active');
+			var pathname = '#' + $(el).find('a').data('pathname');
+			scrollToElement($(pathname));
 		});
 		new Router();
 		
@@ -87,7 +98,7 @@ require(
 			}	
 		});
 	
-
+		//Module.gallery();
 	
 
 		var ListView = Backbone.View.extend({
@@ -146,7 +157,10 @@ require(
 
 				while (this.counter + 1 <= max) {
 				    var stopLoad = (this.counter >= this.galleryItemsAmount);
-				    if (stopLoad) return;
+				    if (stopLoad) {
+						$(this.el).append('<div>Свернуть работы</div>');
+						return;
+					};
 					var compiled = doT.template(gallery_item); 
 					$(this.el).append(compiled({path: this.counter + 1, title: 'Yeeeaaa'}));
 					this.counter++
@@ -165,7 +179,6 @@ require(
 				
 		var listView = new ListView();
 		
-
 		
     }
 );
