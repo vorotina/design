@@ -136,6 +136,7 @@ require(
 			
 			addItem: function(){
 				var max = this.counter + 4;
+				$('.load-more').remove();
 				var item = new ItemCollection();
 				item.set({
 					path: this.counter, 
