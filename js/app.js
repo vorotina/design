@@ -10,18 +10,80 @@ require(
 		
 		}];
 		
+		//console.log(JSON.stringify(Data.itemsList));
+		
 		var _ = this._;		
 		
 		var Item2 = Backbone.Model.extend({
-			title : null,
-			picture : null,
-			descr : null
+				prop1: 'sdf',
+				prop2: 'sdf11'
 		});
 		
 		
 		var ItemCollection = Backbone.Collection.extend({
 			model : Item2
 		});
+		
+		/*var collection = new Backbone.Collection([
+		  {name: "Тим", age: 5},
+		  {name: "Ида", age: 26},
+		  {name: "Роб", age: 55}
+		]);
+		
+
+
+		var names = collection.map(function(book) {
+		  return book.get("name");
+		});*/
+		
+		
+		var thumbItem = Backbone.Model.extend({
+			defaults: {
+				title: 'historical'
+			}
+		});
+
+		var thumbCollection = Backbone.Collection.extend({
+			model: thumbItem,
+			url: '../data/data'
+		});
+
+		var thumbs = new thumbCollection();
+		
+		var onSuccess = function(thumbs) {
+			console.log('11');
+			var firstBook = thumbs.at(0);
+			alert(firstBook.get('title') + ' принадлежит к жанру ' + firstBook.get('author'));
+		};
+
+		thumbs.add({
+			title: 'A Tale of Two Cities',
+			author: 'Charles Dickens',
+			publisher: 'Chapman & Hall'
+		});
+
+		thumbs.add({
+			title: 'The Good Earth',
+			author: 'Pearl S. Buck',
+			publisher: 'John Day'
+		});
+		
+		var books = new Backbone.Collection();
+		books.model = thumbItem;
+		books.url = '/data/data.js';
+		
+		books.fetch({
+			success: onSuccess
+		});
+	
+		console.log(books);
+	
+		/*collection.each(function(book) {
+		  console.log(book.get("name"));
+		});*/
+
+		
+		//console.log(names);
 				 
 		var Router = Backbone.Router.extend({
 			routes: {
@@ -111,7 +173,8 @@ require(
 			initialize: function(){
 			  _.bindAll(this, 'render', 'addItem', 'appendItem'); // every function that uses 'this' as the current object should be in here
 
-			  this.collection = new List();
+			  this.collection = new ItemCollection();
+			  //console.log(this.collection);
 			  this.collection.bind('add', this.appendItem); // collection event binder
 
 			  this.counter = 0;
@@ -139,10 +202,10 @@ require(
 						  
 			  
 			  //????
-			 /* _(this.collection.models).each(function(item){ // in case collection is not empty
+			  _(this.collection.models).each(function(item){ // in case collection is not empty
 				self.appendItem(item);
 				console.log('11');
-			  }, this);*/
+			  }, this);
 			},
 			
 			addItem: function(){
