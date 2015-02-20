@@ -2,14 +2,14 @@
 1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   'backbone-amd',
-1 verbose cli   '--save' ]
+1 verbose cli   '--save',
+1 verbose cli   'requirejs-plugins' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.32
 4 warn package.json node-example@0.0.1 No repository field.
 5 verbose readDependencies using package.json deps
-6 verbose cache add [ 'backbone-amd', null ]
-7 verbose cache add name=undefined spec="backbone-amd" args=["backbone-amd",null]
+6 verbose cache add [ 'requirejs-plugins', null ]
+7 verbose cache add name=undefined spec="requirejs-plugins" args=["requirejs-plugins",null]
 8 verbose parsed url { protocol: null,
 8 verbose parsed url   slashes: null,
 8 verbose parsed url   auth: null,
@@ -19,69 +19,69 @@
 8 verbose parsed url   hash: null,
 8 verbose parsed url   search: null,
 8 verbose parsed url   query: null,
-8 verbose parsed url   pathname: 'backbone-amd',
-8 verbose parsed url   path: 'backbone-amd',
-8 verbose parsed url   href: 'backbone-amd' }
-9 silly lockFile b945e9e0-backbone-amd backbone-amd
-10 verbose lock backbone-amd C:\Users\katerynavo\AppData\Roaming\npm-cache\b945e9e0-backbone-amd.lock
-11 silly lockFile b945e9e0-backbone-amd backbone-amd
-12 silly lockFile b945e9e0-backbone-amd backbone-amd
-13 verbose addNamed [ 'backbone-amd', '' ]
+8 verbose parsed url   pathname: 'requirejs-plugins',
+8 verbose parsed url   path: 'requirejs-plugins',
+8 verbose parsed url   href: 'requirejs-plugins' }
+9 silly lockFile bef6c934-requirejs-plugins requirejs-plugins
+10 verbose lock requirejs-plugins C:\Users\katerynavo\AppData\Roaming\npm-cache\bef6c934-requirejs-plugins.lock
+11 silly lockFile bef6c934-requirejs-plugins requirejs-plugins
+12 silly lockFile bef6c934-requirejs-plugins requirejs-plugins
+13 verbose addNamed [ 'requirejs-plugins', '' ]
 14 verbose addNamed [ null, '*' ]
-15 silly lockFile 3c30e26a-backbone-amd backbone-amd@
-16 verbose lock backbone-amd@ C:\Users\katerynavo\AppData\Roaming\npm-cache\3c30e26a-backbone-amd.lock
-17 silly addNameRange { name: 'backbone-amd', range: '*', hasData: false }
-18 verbose request where is /backbone-amd
+15 silly lockFile 2cd5814b-requirejs-plugins requirejs-plugins@
+16 verbose lock requirejs-plugins@ C:\Users\katerynavo\AppData\Roaming\npm-cache\2cd5814b-requirejs-plugins.lock
+17 silly addNameRange { name: 'requirejs-plugins', range: '*', hasData: false }
+18 verbose request where is /requirejs-plugins
 19 verbose request registry https://registry.npmjs.org/
-20 verbose request id ad28b77ccf6bed59
-21 verbose url raw /backbone-amd
-22 verbose url resolving [ 'https://registry.npmjs.org/', './backbone-amd' ]
-23 verbose url resolved https://registry.npmjs.org/backbone-amd
-24 verbose request where is https://registry.npmjs.org/backbone-amd
-25 info trying registry request attempt 1 at 21:18:11
-26 http GET https://registry.npmjs.org/backbone-amd
-27 http 404 https://registry.npmjs.org/backbone-amd
-28 verbose headers { date: 'Wed, 11 Feb 2015 19:18:12 GMT',
-28 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+20 verbose request id eb9063f643b73eb2
+21 verbose url raw /requirejs-plugins
+22 verbose url resolving [ 'https://registry.npmjs.org/', './requirejs-plugins' ]
+23 verbose url resolved https://registry.npmjs.org/requirejs-plugins
+24 verbose request where is https://registry.npmjs.org/requirejs-plugins
+25 info trying registry request attempt 1 at 20:43:18
+26 http GET https://registry.npmjs.org/requirejs-plugins
+27 http 404 https://registry.npmjs.org/requirejs-plugins
+28 verbose headers { date: 'Sun, 15 Feb 2015 18:43:20 GMT',
+28 verbose headers   server: 'CouchDB/1.6.1 (Erlang OTP/R14B04)',
 28 verbose headers   'content-type': 'application/json',
 28 verbose headers   'cache-control': 'max-age=0',
 28 verbose headers   'content-length': '52',
 28 verbose headers   'accept-ranges': 'bytes',
 28 verbose headers   via: '1.1 varnish',
 28 verbose headers   age: '0',
-28 verbose headers   'x-served-by': 'cache-fra1231-FRA',
+28 verbose headers   'x-served-by': 'cache-ams4126-AMS',
 28 verbose headers   'x-cache': 'MISS',
 28 verbose headers   'x-cache-hits': '0',
-28 verbose headers   'x-timer': 'S1423682292.137184,VS0,VE184',
+28 verbose headers   'x-timer': 'S1424025799.656047,VS0,VE399',
 28 verbose headers   'keep-alive': 'timeout=10, max=50',
 28 verbose headers   connection: 'Keep-Alive' }
 29 silly registry.get cb [ 404,
-29 silly registry.get   { date: 'Wed, 11 Feb 2015 19:18:12 GMT',
-29 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+29 silly registry.get   { date: 'Sun, 15 Feb 2015 18:43:20 GMT',
+29 silly registry.get     server: 'CouchDB/1.6.1 (Erlang OTP/R14B04)',
 29 silly registry.get     'content-type': 'application/json',
 29 silly registry.get     'cache-control': 'max-age=0',
 29 silly registry.get     'content-length': '52',
 29 silly registry.get     'accept-ranges': 'bytes',
 29 silly registry.get     via: '1.1 varnish',
 29 silly registry.get     age: '0',
-29 silly registry.get     'x-served-by': 'cache-fra1231-FRA',
+29 silly registry.get     'x-served-by': 'cache-ams4126-AMS',
 29 silly registry.get     'x-cache': 'MISS',
 29 silly registry.get     'x-cache-hits': '0',
-29 silly registry.get     'x-timer': 'S1423682292.137184,VS0,VE184',
+29 silly registry.get     'x-timer': 'S1424025799.656047,VS0,VE399',
 29 silly registry.get     'keep-alive': 'timeout=10, max=50',
 29 silly registry.get     connection: 'Keep-Alive' } ]
-30 silly lockFile 3c30e26a-backbone-amd backbone-amd@
-31 silly lockFile 3c30e26a-backbone-amd backbone-amd@
-32 error 404 404 Not Found: backbone-amd
+30 silly lockFile 2cd5814b-requirejs-plugins requirejs-plugins@
+31 silly lockFile 2cd5814b-requirejs-plugins requirejs-plugins@
+32 error 404 404 Not Found: requirejs-plugins
 32 error 404
-32 error 404 'backbone-amd' is not in the npm registry.
+32 error 404 'requirejs-plugins' is not in the npm registry.
 32 error 404 You should bug the author to publish it
 32 error 404 It was specified as a dependency of 'node-example'
 32 error 404
 32 error 404 Note that you can also install from a
 32 error 404 tarball, folder, or http url, or git url.
 33 error System Windows_NT 6.2.9200
-34 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "backbone-amd" "--save"
+34 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "requirejs-plugins"
 35 error cwd c:\Users\katerynavo\projects\design
 36 error node -v v0.10.32
 37 error npm -v 1.4.28

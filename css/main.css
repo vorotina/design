@@ -135,3 +135,16 @@
 			clear: both;
 			width: 100%;
 		}
+		
+		.load-more {
+			background: url('../img/ui/more.png') top center no-repeat;
+			width: 128px;
+			height: 128px;
+			display: table;
+			cursor: pointer;
+			margin: 0 auto;
+		}
+		.load-more:hover {
+			background-position: 0 -3px;
+			transition: background .1s ease-out;
+		}
