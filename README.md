@@ -326,11 +326,11 @@ bus.broadcast(message, payload);
 
 ### How to add header module to Legacy
 
-Build it with oet-nextgen builder ([https://github.com/albumprinter/oet-nextgen])
+Build module with oet-nextgen builder https://github.com/albumprinter/oet-nextgen
 
 Include oet-nextgen in Legacy by adding it to 'devDependencies' in package.json 
 
-Upload it by installing dependencies
+Install dependencies
 
 ```javascript
 npm install 
