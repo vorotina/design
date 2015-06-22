@@ -37,7 +37,8 @@ All the module logic goes into the src/ folder
 If you want to add more .scss files here do not forget to add them to grunt task in /oet-header/config/grunt/sass.js
 
 
-#### src/bootstrap.js is used to bootstrap the module, won't be included in application as it will be done in nextgen by walldecor/phonecase/calendar controller
+#### src/bootstrap.js 
+is used to bootstrap the module, won't be included in application as it will be done in nextgen by walldecor/phonecase/calendar controller
 
 ```javascript
 headerModule.init()
@@ -52,7 +53,8 @@ headerModule.init()
     );
 ```
 
-####  src/index.js required in bootstrap file used to get configuration from Legacy code and invoke appropriate desktop or mobile controller 
+####  src/index.js 
+required in bootstrap file used to get configuration from Legacy code and invoke appropriate desktop or mobile controller 
 
 ```javascript
 return service.config()
@@ -112,7 +114,8 @@ bus.unsbscribe(handler);
 bus.broadcast(message, payload);
 ```
 
-#### To serve notifications for Header module used src/notifications.service.js 
+#### src/notifications.service.js 
+used to serve notifications for Header module  
 
 ```javascript
 // subscribes to bus and wait for specific message, 
@@ -175,7 +178,7 @@ NotificationService.prototype.subscribe = function(notify){
 ```
     
     
-#### there are few parts in Header module - controller(desktop and mobile), view(desktop and mobile accordingly) and service:
+#### controller(desktop and mobile), view(desktop and mobile accordingly) and service:
 
 ##### /src/header-module/header.service.js
 
