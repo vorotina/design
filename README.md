@@ -72,7 +72,9 @@ return service.config()
         });
 ```
 
+
 ### Integration
+
 
 #### oet-message-bridge module is used on Legacy side
 
