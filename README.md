@@ -72,52 +72,6 @@ return service.config()
         });
 ```
 
-
-### Integration
-
-
-#### oet-message-bridge module used on Legacy side
-
-##### to broadcast messages 
-
-```javascript
-this.sendNotification( bridge.notifications.Bridge.BROADCAST, [ "HEADER_INIT", config ]);
-```
-
-##### and to tranform messages to pureMVC notification using BridgeMapping  
-
-```javascript
-{
-    srcType     : "HEADER_PREVIEW_MODE_ACTIVE",
-    targetType  : easy.notifications.Editor.PREVIEW_MODE_ACTIVE
-},
-{
-    srcType     : "HEADER_CHECKOUT",
-    targetType  : easy.notifications.Shop.START_CHECKOUT
-},
-{
-    srcType     : "HEADER_NAVIGATE_HISTORY_BACK",
-    targetType  : lib.notifications.NavigationNotes.NAVIGATE_HISTORY_BACK
-}
-```
-
-where "src" describes the message received from the bridge
-
-"target" describes the message to be broadcast over PureMVC as a notification
-
-transformFn parameter is optional, a function that can be used to transform the message payload data into another data type
-
-
-#### oet-lib/bus is used on nexgen side 
-
-used methods 
-
-```javascript
-bus.subscribe(handler);
-bus.unsbscribe(handler);
-bus.broadcast(message, payload);
-```
-
 #### src/notifications.service.js 
 used to serve notifications for Header module  
 
@@ -331,3 +285,47 @@ HeaderView.prototype.init = function(controller){
 
 ```
    
+### Integration
+
+
+#### oet-message-bridge module used on Legacy side
+
+##### to broadcast messages 
+
+```javascript
+this.sendNotification( bridge.notifications.Bridge.BROADCAST, [ "HEADER_INIT", config ]);
+```
+
+##### and to tranform messages to pureMVC notification using BridgeMapping  
+
+```javascript
+{
+    srcType     : "HEADER_PREVIEW_MODE_ACTIVE",
+    targetType  : easy.notifications.Editor.PREVIEW_MODE_ACTIVE
+},
+{
+    srcType     : "HEADER_CHECKOUT",
+    targetType  : easy.notifications.Shop.START_CHECKOUT
+},
+{
+    srcType     : "HEADER_NAVIGATE_HISTORY_BACK",
+    targetType  : lib.notifications.NavigationNotes.NAVIGATE_HISTORY_BACK
+}
+```
+
+where "src" describes the message received from the bridge
+
+"target" describes the message to be broadcast over PureMVC as a notification
+
+transformFn parameter is optional, a function that can be used to transform the message payload data into another data type
+
+
+#### oet-lib/bus is used on nexgen side 
+
+used methods 
+
+```javascript
+bus.subscribe(handler);
+bus.unsbscribe(handler);
+bus.broadcast(message, payload);
+```
