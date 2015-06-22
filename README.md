@@ -230,8 +230,8 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
         
         // cancel checkout if not all photos have been uploaded yet
         // Commands:
-	// ValidateCheckoutCommand
-	// CheckPhotoQualityCommand
+        // ValidateCheckoutCommand
+        // CheckPhotoQualityCommand
         case 'HEADER_CHECKOUT_CANCELLED':
         case 'HEADER_CHECKOUT_FAILED':
             this.$view.setShopButtonEnabled( true );
