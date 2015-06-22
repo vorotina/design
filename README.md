@@ -28,15 +28,16 @@ testem
 
 ```
 
-### developing
+### Developing
 
 All the module logic goes into the src/ folder  
 
-CSS is located in src/css/ folder
+#### CSS is located in src/css/ folder
 
 If you want to add more .scss files here do not forget to add them to grunt task in /oet-header/config/grunt/sass.js
 
-src/bootstrap.js is used to bootstrap the module, won't be included in application as it will be done in nextgen by walldecor/phonecase/calendar controller
+
+#### src/bootstrap.js is used to bootstrap the module, won't be included in application as it will be done in nextgen by walldecor/phonecase/calendar controller
 
 ```javascript
 headerModule.init()
@@ -51,7 +52,7 @@ headerModule.init()
     );
 ```
 
-bootstrap file requires src/index.js where we get configuration from Legacy code and invoke appropriate desktop or mobile controller 
+####  src/index.js required in bootstrap file used to get configuration from Legacy code and invoke appropriate desktop or mobile controller 
 
 ```javascript
 return service.config()
@@ -69,36 +70,55 @@ return service.config()
         });
 ```
 
-#### For integration oet-message-bridge module is used on Legacy side
+### Integration
 
-###### to broadcast messages 
+#### oet-message-bridge module is used on Legacy side
+
+##### to broadcast messages 
 
 ```javascript
 this.sendNotification( bridge.notifications.Bridge.BROADCAST, [ "HEADER_INIT", config ]);
 ```
 
-###### and to tranform messages to pureMVC notification using BridgeMapping  
+##### and to tranform messages to pureMVC notification using BridgeMapping  
 
+```javascript
 {
-    srcType: string,
-    targetType : string,
-    transformFn: Function
+    srcType     : "HEADER_PREVIEW_MODE_ACTIVE",
+    targetType  : easy.notifications.Editor.PREVIEW_MODE_ACTIVE
+},
+{
+    srcType     : "HEADER_CHECKOUT",
+    targetType  : easy.notifications.Shop.START_CHECKOUT
+},
+{
+    srcType     : "HEADER_NAVIGATE_HISTORY_BACK",
+    targetType  : lib.notifications.NavigationNotes.NAVIGATE_HISTORY_BACK
 }
+```
 
 where "src" describes the message received from the bridge
 "target" describes the message to be broadcast over PureMVC as a notification
-transformFn is optional, a Function that can be used to transform the message payload data into another data type
+transformFn parameter is optional, a Function that can be used to transform the message payload data into another data type
 
-#### NextGen modules are communicating via Bus as well as with Legacy code 
 
-src/notifications.service.js serves notifications for Header module
+#### oet-lib/bus is used on nexgen side 
 
-Method Once() subscribes to bus notifications and wait for specific message, 
-once receive it - curry out unsubscribe and return payload as a promise
-
-It's used to get configuration from Legacy once
+used methods 
 
 ```javascript
+bus.subscribe(handler);
+bus.unsbscribe(handler);
+bus.broadcast(message, payload);
+```
+
+#### To serve notifications for Header module used src/notifications.service.js 
+
+```javascript
+// subscribes to bus and wait for specific message, 
+// once receive it - carry out unsubscribe and return payload as a promise
+
+//  It's used to get configuration from Legacy once
 NotificationService.prototype.once = function(notification){
     var deferred = Q.defer();
 
@@ -114,13 +134,13 @@ NotificationService.prototype.once = function(notification){
 };
 ```
 
-Method subscribe() subscribes to all notifications from bus and add them to array until view is not ready 
-Notify parameter holds notification handler described in controller 
-and by returning runNotificationQueue in result we equate notify === runNotificationQueue 
-
-Once handler invoked in controller it means view is ready and we handle all notifications from array by running runNotificationQueue()
-
 ```javascript
+// subscribes to all notifications from bus and add them to array until view is not ready 
+// notify parameter is equal to notification handler function in controller 
+// and by returning runNotificationQueue in the result notify === runNotificationQueue 
+
+// once handler invoked in controller it means view is ready - we handle all notifications from array 
+//by running runNotificationQueue()
 NotificationService.prototype.subscribe = function(notify){
 
     var isReady = false,
@@ -155,12 +175,41 @@ NotificationService.prototype.subscribe = function(notify){
 ```
     
     
-###### there's a header controller, view and service:
+#### there are few parts in Header module - controller(desktop and mobile), view(desktop and mobile accordingly) and service:
 
-/src/header-module/header.controller.js
+##### /src/header-module/header.service.js
+
+Contains general logic not associated with view like
+
+getting config from legacy
+```javascript
+HeaderService.prototype.config = function(){
+    return notifications.once('HEADER_INIT');
+};
+```
+
+using message bus with sockets
+
+only for development, read http://intranet/display/JS/Message+Bus
+
+```javascript
+HeaderService.prototype.connectToLegacy = function(){
+
+    var s = document.createElement( "script" );
+    s.setAttribute( "src", "http://localhost:8001/socket.io/socket.io.js" );
+    s.onload = function() {
+        bus.initialize( io.connect( "http://localhost:8001" ));
+    };
+    document.body.appendChild( s );
+};
+```
+
+
+##### /src/header-module/header.controller.js
 
 responsible for any communication to the outside world manages the view and passes itself as a $scope to the view on initiation
-here is all logic, if user is doing something on Header we handle it in controller
+
+here is all logic related to view, if user is doing something on Header we handle it in controller
 
 ```javascript
 HeaderController.prototype.init = function(config){
@@ -168,8 +217,10 @@ HeaderController.prototype.init = function(config){
     this._isPreviewMode = false;
     this._notifications = new Notifications();
 
+    // add notifications to the a queue using notifications.service
     var dispatchNotifications = this._notifications.subscribe(this._notificationHandler.bind(this));
 
+    // broadcast notifications to Legacy
     this.handleOrderRequest = function() {
         bus.broadcast('HEADER_CHECKOUT');
     };
@@ -197,13 +248,14 @@ HeaderController.prototype.init = function(config){
         }
     };
 
+    // initialize view, then run notification handler 
     this.$view = new view();
     return this.$view.init(this)
         .then(dispatchNotifications);
 };
 ```
 
-there is a method that handle all notifications 
+notification handler show/hide buttons
 
 ```javascript
 HeaderController.prototype._notificationHandler = function(message, payload) {
@@ -247,10 +299,10 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
 };
 ```
 
-/src/header-module/header.view.js 
+#####  /src/header-module/header.view.js 
  
-knows nothing of the outside world, only knows of the controller as $scope
-sends messages to the controller, when some action takes place 
+knows nothing of the outside world, only knows of the controller as $scope, 
+invokes handlers in controller when some action takes place 
 
 ```javascript
 // init function return rendered swig template with cached DOM elements and  attached events
@@ -267,29 +319,3 @@ HeaderView.prototype.init = function(controller){
 
 ```
    
-/src/header-module/header.service.js
-
-Here is general logic not associated with view like
-
-getting config from legacy
-```javascript
-HeaderService.prototype.config = function(){
-    return notifications.once('HEADER_INIT');
-};
-```
-
-
-using message bus with sockets
-only for development, read http://intranet/display/JS/Message+Bus
-
-```javascript
-HeaderService.prototype.connectToLegacy = function(){
-
-    var s = document.createElement( "script" );
-    s.setAttribute( "src", "http://localhost:8001/socket.io/socket.io.js" );
-    s.onload = function() {
-        bus.initialize( io.connect( "http://localhost:8001" ));
-    };
-    document.body.appendChild( s );
-};
-```
