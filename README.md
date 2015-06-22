@@ -33,7 +33,7 @@ testem
 All the module logic goes into the src/ folder  
 
 CSS is located in src/css/ folder
-if you want to add more .scss files here do not forget to add them to grunt task in /oet-header/config/grunt/sass.js
+If you want to add more .scss files here do not forget to add them to grunt task in /oet-header/config/grunt/sass.js
 
 src/bootstrap.js is used to bootstrap the module, 
 won't be included in application as it will be done in nextgen by walldecor/phonecase/calendar controller
