@@ -32,7 +32,7 @@ testem
 
 All the module logic goes into the src/ folder  
 
-#### CSS is located in src/css/ folder
+CSS is located in src/css/ folder
 
 If you want to add more .scss files here do not forget to add them to grunt task in /oet-header/config/grunt/sass.js
 
