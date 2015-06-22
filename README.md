@@ -30,7 +30,7 @@ testem
 
 ### Developing
 
-All the module logic goes into the src/ folder  
+All the module logic resides in the src/ folder  
 
 CSS is located in src/css/ folder
 
@@ -272,7 +272,7 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
 ##### /src/header-module/header.view.mobile.js
  
 knows nothing of the outside world, only knows of the controller as $scope, 
-invokes handlers in controller when some action takes place 
+invokes handlers described in controller when some action takes place 
 
 ```javascript
 // init function return rendered swig template with cached DOM elements and  attached events
@@ -332,4 +332,45 @@ used methods
 bus.subscribe(handler);
 bus.unsbscribe(handler);
 bus.broadcast(message, payload);
+```
+
+### UNIT tests
+
+#### Notifications Service 
+
+Method once() should listen to bus and wait for specific message type
+
+```javascript
+//  use Notifications Service 
+var Notifications = require('../header-module/notifications.service');
+
+describe('#once()', function(){
+	var notifications;
+
+	before(function() {
+	    // create instance of Notifications Service 
+		notifications = new Notifications();
+	});
+
+	it('should listen to bus and wait for specific message type', function(done){
+		//arrange
+		var expected = {type: 'TEST'};
+
+		//act
+		
+		// subscribe to spesific message
+		// if we receive it - check recieved payload with expected
+		// used done() for as code is asynchronous, invoke the callback when test is complete. 
+		// by adding a callback (done) to it() Mocha will know that it should wait for completion
+		notifications.once('TEST_EVENT')
+			.then(function(actual){
+				assert.equal(expected, actual);
+				done();
+			});
+		
+		// broadcast expecting message with payload	
+		notifications.bus.broadcast('TEST_EVENT', expected);
+	});
+
+});
 ```
