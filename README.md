@@ -28,7 +28,7 @@ testem
 
 ```
 
-### Developing
+### Development
 
 All the module logic resides in the src/ folder  
 
