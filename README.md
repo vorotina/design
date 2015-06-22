@@ -76,7 +76,7 @@ return service.config()
 ### Integration
 
 
-#### oet-message-bridge module is used on Legacy side
+#### oet-message-bridge module used on Legacy side
 
 ##### to broadcast messages 
 
