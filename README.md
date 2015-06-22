@@ -1,24 +1,33 @@
 # OET - Module - Header
 
-### installation
+### Clone the repository in a local directory
 
 get the repo
 ```
 git clone git@github.com:albumprinter/oet-header.git oet-header
 cd oet-header
+```
 
+### Setup the local environment:
+
+```
+// install dependencies
 npm install
-```
-run the tests (the actual tests are in ./src/tests)
-```
-npm install -g testem
-grunt test
-testem
-```
-run development server
-```
+
+// Build it
+grunt build
+
+// Start local web server (with external services)
 grunt dev
+
+// Running tests in JSUnit:
+grunt test
+
+// Running new Mocha tests with Testem
+testem
+
 ```
+
 ### developing
 
 All the module logic goes into the src/ folder  
