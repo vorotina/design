@@ -326,13 +326,17 @@ bus.broadcast(message, payload);
 
 ### How to add header module to Legacy
 
-##### Build it with oet-nextgen builder 
-##### Include oet-nextgen in Legacy by adding in package.json 
-##### Upload it as a part of nextgen by installing dependencies
+Build it with oet-nextgen builder ([https://github.com/albumprinter/oet-nextgen])
+
+Include oet-nextgen in Legacy by adding it to 'devDependencies' in package.json 
+
+Upload it by installing dependencies
+
 ```javascript
 npm install 
 ```
-##### init in PrepareViewCommand
+init it in PrepareViewCommand
+
 ```javascript
  window[ "nextGenWalldecor" ][ "init" ]();
 ```
