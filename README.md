@@ -360,8 +360,9 @@ describe('#once()', function(){
 		
 		// subscribe to spesific message
 		// if we receive it - check recieved payload with expected
-		// used done() for as code is asynchronous, invoke the callback when test is complete. 
-		// by adding a callback (done) to it() Mocha will know that it should wait for completion
+		// by adding a callback (done) to it() Mocha will know that it should wait 
+		// for completion of asynchronous code
+		// callback should be invoked when test is complete 
 		notifications.once('TEST_EVENT')
 			.then(function(actual){
 				assert.equal(expected, actual);
