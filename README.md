@@ -167,7 +167,7 @@ HeaderService.prototype.connectToLegacy = function(){
 
 
 #### controller
-(desktop and mobile) 
+(separate for desktop and mobile) 
 
 ##### /src/header-module/header.controller.js
 
