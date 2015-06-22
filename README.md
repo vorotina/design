@@ -100,8 +100,10 @@ this.sendNotification( bridge.notifications.Bridge.BROADCAST, [ "HEADER_INIT", c
 ```
 
 where "src" describes the message received from the bridge
+
 "target" describes the message to be broadcast over PureMVC as a notification
-transformFn parameter is optional, a Function that can be used to transform the message payload data into another data type
+
+transformFn parameter is optional, a function that can be used to transform the message payload data into another data type
 
 
 #### oet-lib/bus is used on nexgen side 
@@ -178,7 +180,7 @@ NotificationService.prototype.subscribe = function(notify){
 ```
     
     
-#### controller(desktop and mobile), view(desktop and mobile accordingly) and service:
+#### service
 
 ##### /src/header-module/header.service.js
 
@@ -207,6 +209,8 @@ HeaderService.prototype.connectToLegacy = function(){
 };
 ```
 
+
+#### controller(desktop and mobile) 
 
 ##### /src/header-module/header.controller.js
 
@@ -301,6 +305,9 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
     }
 };
 ```
+
+
+#### view(desktop and mobile accordingly)
 
 #####  /src/header-module/header.view.js 
  
