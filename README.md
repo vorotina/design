@@ -166,7 +166,8 @@ HeaderService.prototype.connectToLegacy = function(){
 ```
 
 
-#### controller(desktop and mobile) 
+#### controller
+(desktop and mobile) 
 
 ##### /src/header-module/header.controller.js
 
@@ -263,7 +264,8 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
 ```
 
 
-#### view(desktop and mobile accordingly)
+#### view
+(desktop and mobile accordingly)
 
 #####  /src/header-module/header.view.js 
  
