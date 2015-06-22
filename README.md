@@ -170,6 +170,7 @@ HeaderService.prototype.connectToLegacy = function(){
 (separate for desktop and mobile) 
 
 ##### /src/header-module/header.controller.js
+##### /src/header-module/header.controller.mobile.js
 
 responsible for any communication to the outside world manages the view and passes itself as a $scope to the view on initiation
 
@@ -267,7 +268,8 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
 #### view
 (desktop and mobile accordingly)
 
-#####  /src/header-module/header.view.js 
+##### /src/header-module/header.view.js 
+##### /src/header-module/header.view.mobile.js
  
 knows nothing of the outside world, only knows of the controller as $scope, 
 invokes handlers in controller when some action takes place 
