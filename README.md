@@ -189,29 +189,6 @@ HeaderController.prototype.init = function(config){
     this.handleOrderRequest = function() {
         bus.broadcast('HEADER_CHECKOUT');
     };
-    this.handlePreviewRequest = function() {
-        this._isPreviewMode = !this._isPreviewMode;
-        bus.broadcast('HEADER_PREVIEW_MODE_ACTIVE', this._isPreviewMode);
-    };
-    this.handleAddEventRequest = function(){
-        bus.broadcast('HEADER_OPEN_EVENT_MANAGER');
-    };
-    this.fullScreenHandler = function(wrapper) {
-        var requestMethod, el;
-        if (this._isFullScreen) {
-            requestMethod =  document.exitFullscreen || document.webkitExitFullscreen
-                || document.mozCancelFullScreen || document.msExitFullscreen;
-            el = document;
-        } else {
-            requestMethod = wrapper.requestFullScreen || wrapper.webkitRequestFullScreen
-                || wrapper.mozRequestFullScreen || wrapper.msRequestFullscreen;
-            el = wrapper;
-        }
-        if (requestMethod) {
-            requestMethod.call(el);
-            this._isFullScreen = !this._isFullScreen;
-        }
-    };
 
     // initialize view, then run notification handler 
     this.$view = new view();
@@ -228,34 +205,47 @@ HeaderController.prototype._notificationHandler = function(message, payload) {
     switch(message) {
 
         // toggle preview/editor view in Legacy
+        // Commands:
+        // PreviewModeActiveCommand
         case 'HEADER_PREVIEW_MODE_ACTIVE':
             this.$view.toggleToPreviewButton( payload );
             this._isPreviewMode = payload;
             break;
 
-        // hide/show buttons in header if photos added/removed in Legacy
+        // hide/show buttons in header if photos are added/removed in Legacy
+        // Commands:
+        // RemovePhotoFromPlaceholderCommand
+        // BaseStorageRequestCommand
         case 'HEADER_STATE_PHOTOS_REGISTERED_AND_UPLOADED':
             this.$view.setShopButtonEnabled( payload );
             this.$view.setPreviewButtonEnabled( payload );
             break;
 
-        // redirects to Shop in Legacy, hide order button
+        // hide order button
+        // Commands:
+        // startCheckoutCommand
         case 'HEADER_CHECKOUT':
             this.$view.setShopButtonEnabled( false );
             break;
         
-        // redirects to Shop in Legacy
+        // cancel checkout if not all photos have been uploaded yet,
+        // Commands:
+	// ValidateCheckoutCommand
+	// CheckPhotoQualityCommand
         case 'HEADER_CHECKOUT_CANCELLED':
         case 'HEADER_CHECKOUT_FAILED':
             this.$view.setShopButtonEnabled( true );
             break;
 
         // there need to be more than 1 valid photo 
+        // Commands:
+        // ValidateProductCommand
         case 'HEADER_STATE_PRODUCT_VALIDATED':
             this.$view.setShopButtonEnabled( payload );
             this.$view.setPreviewButtonEnabled( payload );
             break;
         
+        // UpdateProductPriceCommand
         case 'HEADER_PRODUCT_PRICE_UPDATED':
             this.$view.updatePrice( payload );
             break;
@@ -371,6 +361,45 @@ describe('#once()', function(){
 		
 		// broadcast expecting message with payload	
 		notifications.bus.broadcast('TEST_EVENT', expected);
+	});
+
+});
+```
+
+Method subscribe() 
+
+Here we check that notifications in queue will be processed once view will be ready and handler invoked 
+
+```javascript
+it('should notify after ready() invoked', function(done){
+	//arrange
+	var expected = {
+		message: 'TEST_EVENT',
+		payload: ['TEST']
+	};
+	
+	//act
+	// subscribes to bus messages, once ready() will be invoked function inside will be runed
+	// we check received message(actual) with expected
+	var ready = notifications.subscribe(function(message,payload){
+		var actual = {
+			message: message,
+			payload: payload
+		};
+		
+		assert.deepEqual(expected, actual);
+		done();
+	});
+	
+	// broadcast message that will be added to array and wait in a queue to be handled
+	notifications.bus.broadcast(expected.message, expected.payload);
+	
+	// emulate waiting when view will be rendered 
+	notifications.bus.subscribe(function(){
+		setTimeout(function(){
+			// call handler for notifications in a queue 
+			ready();
+		}, 50);
 	});
 
 });
