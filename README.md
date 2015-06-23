@@ -1,5 +1,16 @@
 # OET - Module - Header
 
+## Goals
+
+integration with Legacy via notifications
+
+Supported Legacy projects:
+* https://github.com/albumprinter/oet-js-walldecor
+* https://github.com/albumprinter/oet-js-phonecase
+* https://github.com/albumprinter/oet-js-calendar
+
+## Usage
+
 ### Clone the repository in a local directory
 
 get the repo
