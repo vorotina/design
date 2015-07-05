@@ -1,5 +1,77 @@
 # JS Walldecor
 
+## NextGen integration
+
+### add as a Cox dependency
+```
+"coxDependencies": {
+  "header": "git@github.com:albumprinter/oet-header.git",
+  "notification-area": "git@github.com:albumprinter/oet-notification-area.git",
+}
+```
+### exclude from CORE modules
+
+/config/globals.js
+
+```
+{
+    isCore  : true,
+    input   : [
+        "modules!(node_modules)/**/src",
+        "dist/build/templates",
+        "node_modules/oet-puremvc-module"
+    ],
+    exclude: [
+        "modules/header/src",
+        "modules/notification-area/src"
+    ],
+    output  : "dist/build/modules/module-core.js"
+}
+```
+
+### /config/globals.js
+
+```
+externalModules : [
+    {
+        input: "./modules/header/src",
+        bootstrap: "./modules/header/src/header-module/index.js"
+    },
+    {
+        input: "./modules/notification-area/src",
+        bootstrap: "./modules/notification-area/src/notification-area/notification-area.controller.js"
+    }
+]
+```
+### /resources/index.html
+
+```
+<link rel="stylesheet" type="text/css" href="./nextgen/nextgen.css" />
+<script type="text/javascript" src="./nextgen/nextgen.js"></script>
+```
+### Gruntfile.js  
+
+```
+grunt.registerTask('build-external-modules', 'Applying external modules', function () {
+    grunt.task.run('clean:nextgen');
+    // templates
+    grunt.task.run('compile-views:nextgen');
+    // images
+    grunt.task.run('copy:nextgen');
+    // js
+    grunt.task.run('browserify:nextgen');
+    grunt.task.run('uglify:nextgen');
+    // css
+    grunt.task.run('write-css-dependencies:nextgen'); //
+    grunt.task.run('sass:nextgen');
+    grunt.task.run('cssmin:nextgen');
+});
+```
+
+
+
+
+
 ## Setup local environment
 
 ### Required Tools:
