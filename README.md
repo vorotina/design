@@ -68,7 +68,8 @@ grunt.registerTask('build-external-modules', 'Applying external modules', functi
 });
 ```
 
-
+Check in console notification area module
+ICBM.launchSync('notification to area', {title: 'First2', body: 'First message'})
 
 
 
