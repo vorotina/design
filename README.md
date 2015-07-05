@@ -2,7 +2,7 @@
 
 ## NextGen integration
 
-### add as a Cox dependency
+### add modules as a Cox dependency
 ```
 "coxDependencies": {
   "header": "git@github.com:albumprinter/oet-header.git",
