@@ -1,15 +1,32 @@
 # JS Walldecor
 
-## NextGen integration
+## Include nextgen moduels
 
-### add modules as a Cox dependency
+### add nextgen modules as a Cox dependencies
 ```
 "coxDependencies": {
   "header": "git@github.com:albumprinter/oet-header.git",
   "notification-area": "git@github.com:albumprinter/oet-notification-area.git",
 }
 ```
-### exclude from CORE modules
+
+### add them as externalModules
+in grunt file /config/globals.js
+
+```
+externalModules : [
+    {
+        input: "./modules/header/src",
+        bootstrap: "./modules/header/src/header-module/index.js"
+    },
+    {
+        input: "./modules/notification-area/src",
+        bootstrap: "./modules/notification-area/src/notification-area/notification-area.controller.js"
+    }
+]
+```
+
+### exclude them from CORE modules
 
 /config/globals.js
 
@@ -29,48 +46,37 @@
 }
 ```
 
-### /config/globals.js
+### Include nextgen output files in index.html
 
-```
-externalModules : [
-    {
-        input: "./modules/header/src",
-        bootstrap: "./modules/header/src/header-module/index.js"
-    },
-    {
-        input: "./modules/notification-area/src",
-        bootstrap: "./modules/notification-area/src/notification-area/notification-area.controller.js"
-    }
-]
-```
-### /resources/index.html
+/resources/index.html
+
 
 ```
 <link rel="stylesheet" type="text/css" href="./nextgen/nextgen.css" />
 <script type="text/javascript" src="./nextgen/nextgen.js"></script>
 ```
-### Gruntfile.js  
+
+### Build nextgen modules
+
+Gruntfile.js  
 
 ```
 grunt.registerTask('build-external-modules', 'Applying external modules', function () {
+    // clean the folder
     grunt.task.run('clean:nextgen');
-    // templates
+    // complile templates
     grunt.task.run('compile-views:nextgen');
-    // images
+    // copy images
     grunt.task.run('copy:nextgen');
-    // js
+    // concatenate and minify
     grunt.task.run('browserify:nextgen');
     grunt.task.run('uglify:nextgen');
-    // css
+    // concatenate and minify css
     grunt.task.run('write-css-dependencies:nextgen'); //
     grunt.task.run('sass:nextgen');
     grunt.task.run('cssmin:nextgen');
 });
 ```
-
-Check in console notification area module
-ICBM.launchSync('notification to area', {title: 'First2', body: 'First message'})
-
 
 
 ## Setup local environment
