@@ -50,7 +50,6 @@ externalModules : [
 
 /resources/index.html
 
-
 ```
 <link rel="stylesheet" type="text/css" href="./nextgen/nextgen.css" />
 <script type="text/javascript" src="./nextgen/nextgen.js"></script>
@@ -68,14 +67,19 @@ grunt.registerTask('build-external-modules', 'Applying external modules', functi
     grunt.task.run('compile-views:nextgen');
     // copy images
     grunt.task.run('copy:nextgen');
-    // concatenate and minify
+    // concatenate and minify js
     grunt.task.run('browserify:nextgen');
     grunt.task.run('uglify:nextgen');
     // concatenate and minify css
     grunt.task.run('write-css-dependencies:nextgen'); //
-    grunt.task.run('sass:nextgen');
+    grunt.task.run('sass-nextgen-all');
     grunt.task.run('cssmin:nextgen');
 });
+```
+
+### initialize the external modules
+```
+window[ "nextGenHeader" ][ "init" ]();
 ```
 
 
