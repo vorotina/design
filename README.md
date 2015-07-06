@@ -1,8 +1,18 @@
 # JS Walldecor
 
-## Include nextgen moduels
+## How include nextgen moduels
 
-### add nextgen modules as a Cox dependencies
+* Add nextgen modules
+* Build them
+* Concat all modules in one output js and css file
+* Include output files in project
+* Init nextgen modules
+
+
+### add nextgen modules 
+
+#### as a Cox dependencies in package.json
+
 ```
 "coxDependencies": {
   "header": "git@github.com:albumprinter/oet-header.git",
@@ -10,8 +20,7 @@
 }
 ```
 
-### add them as externalModules
-in grunt file /config/globals.js
+#### in grunt file /config/globals.js
 
 ```
 externalModules : [
@@ -26,9 +35,7 @@ externalModules : [
 ]
 ```
 
-### exclude them from CORE modules
-
-/config/globals.js
+exclude them from CORE modules
 
 ```
 {
@@ -46,18 +53,9 @@ externalModules : [
 }
 ```
 
-### Include nextgen output files in index.html
-
-/resources/index.html
-
-```
-<link rel="stylesheet" type="text/css" href="./nextgen/nextgen.css" />
-<script type="text/javascript" src="./nextgen/nextgen.js"></script>
-```
-
 ### Build nextgen modules
 
-Gruntfile.js  
+with 'build-external-modules' task, Gruntfile.js  
 
 ```
 grunt.registerTask('build-external-modules', 'Applying external modules', function () {
@@ -76,8 +74,16 @@ grunt.registerTask('build-external-modules', 'Applying external modules', functi
     grunt.task.run('cssmin:nextgen');
 });
 ```
+### Include nextgen output files 
 
-### initialize the external modules
+in /resources/index.html
+
+```
+<link rel="stylesheet" type="text/css" href="./nextgen/nextgen.css" />
+<script type="text/javascript" src="./nextgen/nextgen.js"></script>
+```
+
+### initialize the external modules in PrepareViewCommand
 ```
 window[ "nextGenHeader" ][ "init" ]();
 ```
