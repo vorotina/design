@@ -76,6 +76,11 @@ exclude it from CORE modules
 }
 ```
 
+#### Upload module using Cox
+```
+cox install 
+```
+
 #### Init module in PrepareViewCommand
 ```
 window[ "nextGenHeader" ][ "init" ]();
