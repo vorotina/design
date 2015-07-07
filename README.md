@@ -11,7 +11,7 @@ Nextgen modules are added in modules folder via Cox, then built one by one with 
 |       +-- nextgen.min.css
 +-- modules
 |   +-- header
-|   +-- notification area
+|   +-- notification-area
 |   +-- ...
 +-- resources
 |   +-- index-dev.html
