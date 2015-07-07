@@ -80,6 +80,7 @@ exclude it from CORE modules
 ```
 cox install 
 ```
+Cox will also install all 'dependencies' from module's package.json insile the module (not 'devDependencies')
 
 #### Init module in PrepareViewCommand
 ```
@@ -92,7 +93,7 @@ cox checkout <branch>
 cox pull <branch>
 cox install 
 ```
-This will install modules and theirs dependencies, described in module 'dependencies' in package.json
+This will install all modules and theirs dependencies
 
 ### <a name="build"></a> How to build nextgen modules
 
