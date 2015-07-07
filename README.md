@@ -1,8 +1,11 @@
 # JS Walldecor
 
-## Nextgen integration
+## Nextgen integration inside OldGen
 
-### add nextgen module
+* [Add nextgen module](#add)
+* [Build nextgen modules](#build)
+
+### <a name="add"></a>add nextgen module
 
 #### as a Cox dependencies in package.json
 
@@ -55,7 +58,7 @@ window[ "nextGenHeader" ][ "init" ]();
 ```
 
 
-### Build nextgen modules
+### <a name="build"></a> Build nextgen modules
 
 on dev environment 
 
