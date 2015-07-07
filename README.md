@@ -2,10 +2,10 @@
 
 ## Nextgen integration inside OldGen
 
-* [Add nextgen module](#add)
-* [Build nextgen modules](#build)
+* [How to add nextgen module](#add)
+* [How to build nextgen modules](#build)
 
-### <a name="add"></a>add nextgen module
+### <a name="add"></a>How to add nextgen module
 
 #### as a Cox dependencies in package.json
 
@@ -58,7 +58,7 @@ window[ "nextGenHeader" ][ "init" ]();
 ```
 
 
-### <a name="build"></a> Build nextgen modules
+### <a name="build"></a> How to build nextgen modules
 
 on dev environment 
 
