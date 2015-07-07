@@ -53,7 +53,7 @@ exclude it from CORE modules
 }
 ```
 
-### Init module in PrepareViewCommand
+#### Init module in PrepareViewCommand
 ```
 window[ "nextGenHeader" ][ "init" ]();
 ```
