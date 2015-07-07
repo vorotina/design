@@ -2,7 +2,30 @@
 
 ## Nextgen integration inside OldGen
 
+Nextgen modules are added in modules folder via Cox, then built one by one with grunt task and united in one output css and js in /dist/externals folder. Output files are embeded in index.html and after that can be initialized in PrepareViewCommand
+
+.
++-- dist
+|   +-- externals
+|       +-- nextgen.min.js
+|       +-- nextgen.min.css
++-- modules
+|   +-- header
+|   +-- notification area
+|   +-- ...
++-- resources
+|   +-- index-dev.html
+|   +-- index-prod.html
++-- src
+|   +--
+|     +-- controller
+|       +-- startup
+|         +-- PrepareViewCommand.js
++-- package.json
+  
+
 * [How to add nextgen module](#add)
+* [How to update all nextgen modules](#update)
 * [How to build nextgen modules](#build)
 
 ### <a name="add"></a>How to add nextgen module
@@ -57,7 +80,14 @@ exclude it from CORE modules
 ```
 window[ "nextGenHeader" ][ "init" ]();
 ```
+### <a name="update"></a>How to update all nextgen modules
 
+```
+cox checkout <branch>
+cox pull <branch>
+cox install 
+```
+This will install modules and there dependencies, described in 'dependencies' in package.json
 
 ### <a name="build"></a> How to build nextgen modules
 
