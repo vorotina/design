@@ -7,7 +7,7 @@
 
 ### <a name="add"></a>How to add nextgen module
 
-#### as a Cox dependencies in package.json
+#### add module in package.json as a Cox dependency
 
 ```
 "coxDependencies": {
@@ -17,9 +17,10 @@
 }
 ```
 
-#### in grunt config /config/globals.js
+#### include module in grunt config  
 
-include it in externalModules array
+in file /config/globals.js
+
 
 ```
 externalModules : [
@@ -34,7 +35,7 @@ externalModules : [
 ]
 ```
 
-exclude from CORE modules
+exclude it from CORE modules
 
 ```
 {
@@ -52,7 +53,7 @@ exclude from CORE modules
 }
 ```
 
-### Init the external modules in PrepareViewCommand
+### Init module in PrepareViewCommand
 ```
 window[ "nextGenHeader" ][ "init" ]();
 ```
@@ -60,18 +61,18 @@ window[ "nextGenHeader" ][ "init" ]();
 
 ### <a name="build"></a> How to build nextgen modules
 
-on dev environment 
+run build task for dev environment 
 
 ```
 grunt dev
 ```
 
-on prod environment
+run build task for prod environment
 ```
 grunt prodTest
 ```
 
-Build tasks include 'build-external-modules' task, no extra step should be done
+Build tasks include 'build-external-modules' task, no extra step should be done to build nextgen modules
 
 
 
