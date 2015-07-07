@@ -72,7 +72,7 @@ run build task for prod environment
 grunt prodTest
 ```
 
-Build tasks include 'build-external-modules' task, no extra step should be done to build nextgen modules
+Build tasks include 'build-external-modules' task, so no extra steps should be done 
 
 
 
