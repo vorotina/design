@@ -1,15 +1,8 @@
 # JS Walldecor
 
-## How include nextgen moduels
+## Nextgen integration
 
-* Add nextgen modules
-* Build them
-* Concat all modules in one output js and css file
-* Include output files in project
-* Init nextgen modules
-
-
-### add nextgen modules 
+### add nextgen module
 
 #### as a Cox dependencies in package.json
 
@@ -17,10 +10,13 @@
 "coxDependencies": {
   "header": "git@github.com:albumprinter/oet-header.git",
   "notification-area": "git@github.com:albumprinter/oet-notification-area.git",
+  ...
 }
 ```
 
-#### in grunt file /config/globals.js
+#### in grunt config /config/globals.js
+
+include it in externalModules array
 
 ```
 externalModules : [
@@ -35,7 +31,7 @@ externalModules : [
 ]
 ```
 
-exclude them from CORE modules
+exclude from CORE modules
 
 ```
 {
@@ -53,40 +49,27 @@ exclude them from CORE modules
 }
 ```
 
-### Build nextgen modules
-
-with 'build-external-modules' task, Gruntfile.js  
-
-```
-grunt.registerTask('build-external-modules', 'Applying external modules', function () {
-    // clean the folder
-    grunt.task.run('clean:nextgen');
-    // complile templates
-    grunt.task.run('compile-views:nextgen');
-    // copy images
-    grunt.task.run('copy:nextgen');
-    // concatenate and minify js
-    grunt.task.run('browserify:nextgen');
-    grunt.task.run('uglify:nextgen');
-    // concatenate and minify css
-    grunt.task.run('write-css-dependencies:nextgen'); //
-    grunt.task.run('sass-nextgen-all');
-    grunt.task.run('cssmin:nextgen');
-});
-```
-### Include nextgen output files 
-
-in /resources/index.html
-
-```
-<link rel="stylesheet" type="text/css" href="./nextgen/nextgen.css" />
-<script type="text/javascript" src="./nextgen/nextgen.js"></script>
-```
-
-### initialize the external modules in PrepareViewCommand
+### Init the external modules in PrepareViewCommand
 ```
 window[ "nextGenHeader" ][ "init" ]();
 ```
+
+
+### Build nextgen modules
+
+on dev environment 
+
+```
+grunt dev
+```
+
+on prod environment
+```
+grunt prodTest
+```
+
+Build tasks include 'build-external-modules' task, no extra step should be done
+
 
 
 ## Setup local environment
