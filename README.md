@@ -6,9 +6,9 @@ Nextgen modules are installed via Cox and contained in /modules folder
 
 Nextgen modules are built one by one with grunt task and united in one output css and js in /dist/externals folder
 
-Output files are embeded in /resources/index.html
+Output files are embedded in /resources/index.html
 
-Nextgen modules initialized by PrepareViewCommand
+Nextgen modules initialized by startup PrepareViewCommand
 
 ```
 .
@@ -87,7 +87,7 @@ exclude it from CORE modules
 ```
 cox install 
 ```
-Cox will also install all 'dependencies' from module's package.json insile the module (not 'devDependencies')
+Cox will also install all 'dependencies' from module's package.json inside the module (not 'devDependencies')
 
 #### Init module in PrepareViewCommand
 ```
@@ -117,5 +117,3 @@ cox pull
 cox install 
 ```
 This will install all modules and theirs dependencies
-
-
