@@ -106,7 +106,7 @@ Build tasks include 'build-external-modules' task, so no extra steps should be d
 
 ```
 cox checkout <branch>
-cox pull <branch>
+cox pull 
 cox install 
 ```
 This will install all modules and theirs dependencies
