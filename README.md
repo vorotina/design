@@ -25,8 +25,8 @@ Nextgen modules are added in modules folder via Cox, then built one by one with 
  ``` 
 
 * [How to add nextgen module](#add)
-* [How to update all nextgen modules](#update)
 * [How to build nextgen modules](#build)
+* [How to update all nextgen modules](#update)
 
 ### <a name="add"></a>How to add nextgen module
 
@@ -86,14 +86,6 @@ Cox will also install all 'dependencies' from module's package.json insile the m
 ```
 window[ "nextGenHeader" ][ "init" ]();
 ```
-### <a name="update"></a>How to update all nextgen modules
-
-```
-cox checkout <branch>
-cox pull <branch>
-cox install 
-```
-This will install all modules and theirs dependencies
 
 ### <a name="build"></a> How to build nextgen modules
 
@@ -110,6 +102,14 @@ grunt prodTest
 
 Build tasks include 'build-external-modules' task, so no extra steps should be done 
 
+### <a name="update"></a>How to update all nextgen modules
+
+```
+cox checkout <branch>
+cox pull <branch>
+cox install 
+```
+This will install all modules and theirs dependencies
 
 
 ## Setup local environment
