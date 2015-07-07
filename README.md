@@ -3,7 +3,7 @@
 ## Nextgen integration inside OldGen
 
 Nextgen modules are added in modules folder via Cox, then built one by one with grunt task and united in one output css and js in /dist/externals folder. Output files are embeded in index.html and after that can be initialized in PrepareViewCommand
-
+```
 .
 +-- dist
 |   +-- externals
@@ -22,7 +22,7 @@ Nextgen modules are added in modules folder via Cox, then built one by one with 
 |       +-- startup
 |         +-- PrepareViewCommand.js
 +-- package.json
-  
+ ``` 
 
 * [How to add nextgen module](#add)
 * [How to update all nextgen modules](#update)
