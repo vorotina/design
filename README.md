@@ -87,7 +87,7 @@ cox checkout <branch>
 cox pull <branch>
 cox install 
 ```
-This will install modules and there dependencies, described in 'dependencies' in package.json
+This will install modules and theirs dependencies, described in module 'dependencies' in package.json
 
 ### <a name="build"></a> How to build nextgen modules
 
