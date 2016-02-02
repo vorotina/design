@@ -33,6 +33,7 @@ Description of the properties:
 * horizontalAlignment - The horizontal alignment ("left", "center", "right")
 * position - The position (in Vistapixels) for the bounding box containing the text
 
+
     CLOSE_EDITOR
 
 Closes text editor.
