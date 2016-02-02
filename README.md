@@ -4,10 +4,13 @@ Text Editor is a UI control that allows input and formatting of text content
 
 ## Module listens to the following bus messages:
 
+```javascript
     OPEN_EDITOR
+```javascript
 
 Opens a text editor, payload Object looks like this:
 
+```javascript
 {
     "placeholder" : <object>,
     "text": <string>,
@@ -22,6 +25,7 @@ Opens a text editor, payload Object looks like this:
            "left": <number>,
      }
 }
+```javascript
 
 Description of the properties:
 
@@ -33,29 +37,42 @@ Description of the properties:
 * horizontalAlignment - The horizontal alignment ("left", "center", "right")
 * position - The position (in Vistapixels) for the bounding box containing the text
 
-
+```javascript
     CLOSE_EDITOR
+```javascript
 
 Closes text editor.
 
 ## Module fires the following bus messages:
 
-    UPDATE_TEXT with payload Object:
+```javascript
+    UPDATE_TEXT 
+```javascript
 
+    with payload Object:
+
+```javascript
      {
         placeholder : <object>
         text : <string>,
         styles: <Array.<string>>
      }
+```javascript
 
 Fired whenever the text is changed
 
-    DELETE_TEXT with payload Object:
-
+```javascript
+    DELETE_TEXT 
+ ```javascript
+ 
+    with payload Object:
+    
+```javascript
      {
         placeholder : <object>
         text : <string>,
         styles: <Array.<string>>
      }
+```javascript
 
 Fired whenever text is removed
