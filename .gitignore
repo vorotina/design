@@ -1,0 +1,5 @@
+node_modules/
+npm_packages_cache/
+npm-debug.log
+.idea
+intelliJ project

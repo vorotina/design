@@ -1,0 +1,24 @@
+<div class='project'>
+	<h2 class="clear">{{=it.title}}</h2>
+
+	<img src='{{=it.preview}}' width="600" />
+	{{? it.fullDescription }}
+		<p class>Описание:<p>
+		<p>{{=it.fullDescription}}</p>
+	{{?}}
+
+	{{? it.website }}
+		<p class>Cайт:<p>
+		<p><a href="{{=it.website}}">{{=it.website}}</a></p>
+	{{?}}
+
+	{{? it.deadline }}
+		<p class>Сроки:<p>
+		<p>{{=it.deadline}}</p>
+	{{?}}
+
+	{{? it.price }}
+		<p class>Цена:<p>
+		<p>{{=it.price}}</p>
+	{{?}}
+</div>
