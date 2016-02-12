@@ -48,5 +48,10 @@ require(
 			}, 700);
         });
 
+        $(".back-on-top").click(function(e) {
+            $("body,html").animate({
+                scrollTop: 0
+            }, 700);
+        });
     }
 );

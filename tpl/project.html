@@ -1,9 +1,9 @@
 <div class='project'>
-	<h2 class="clear">{{=it.title}}</h2>
 
-	<p class="list">
-		<a href='/#project/{{=it.prev}}' class="previous">Предыдущая</a>
-		<a href='/#project/{{=it.next}}' class="next">Сдедующая</a>
+	<p class="list top">
+		<a href='/#project/{{=it.prev}}' class="previous"></a>
+		<span class="title">{{=it.title}}</span>
+		<a href='/#project/{{=it.next}}' class="next"></a>
 	</p>
 
 	{{~it.preview :value:index}}
@@ -16,8 +16,8 @@
 	{{~}}
 
 	<p class="list">
-		<a href='/#project/{{=it.prev}}' class="previous">Предыдущая</a>
-		<a href='/#project/{{=it.nex}}' class="next">Сдедующая</a>
+		<a href='/#project/{{=it.prev}}' class="previous"><- Предыдущая работа</a>
+		<a href='/#project/{{=it.nex}}' class="next">Сдедующая работа -></a>
 	</p>
 
 </div>

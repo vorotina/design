@@ -26,7 +26,7 @@ define(
                         ]
                     },
                     {
-                        "title": "Мой аккаунт",
+                        "title": "Кабинет пользователя",
                         "description": "Страница пользователя",
                         "thumb": "../styles/img/thumb/2.png",
                         "preview": [{"src": "../styles/img/preview/2/1.png"}]
@@ -179,8 +179,8 @@ define(
                         ]
                     },
                     {
-                        "title": "Музыкальные футболки 2Day",
-                        "description": "Лучшие прикольные футболки",
+                        "title": "Банкет 360",
+                        "description": "Бесплатный подбор банкетныз залов в Москве",
                         "thumb": "../styles/img/thumb/14.png",
                         "preview": [
                             {
