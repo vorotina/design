@@ -6,11 +6,12 @@ require(
     function(GalleryModel, GalleryView, HomeView, ProjectView, $, _, Backbone) {
 
         var _ = this._;
+        var self = this;
 
-		var galleryModel = new GalleryModel();
-		var galleryView = new GalleryView(galleryModel.attributes);
+		this.model = new GalleryModel();
+		var galleryView = new GalleryView(this);
 		var homeView = new HomeView();
-		var projectView = new ProjectView(galleryModel.attributes);
+		var projectView = new ProjectView(this);
 
         // Routs
         var Router = Backbone.Router.extend({
@@ -29,11 +30,11 @@ require(
 				$(".top-menu li").removeClass("active");
 				galleryView.remove();
 				homeView.remove();
-				projectView.render(id);
+				projectView.render(self.router, id);
             }
         });
 
-		var appRouter = new Router();
+		this.router = new Router();
 
         Backbone.history.start();
 

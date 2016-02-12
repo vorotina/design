@@ -463,9 +463,28 @@ textarea {
 	max-width: 1000px;
 }
 
-.project img {
+.project .img-block {
+	padding-bottom: 50px;
+}
+
+.project .list {
+	clear: both;
+	width: 100%;
+	padding-bottom: 15px;
+	font-size: 11px;
+}
+
+.project .previous {
 	float: left;
-	margin-right: 30px;
+}
+
+.project .next {
+	float: right;
+}
+
+.project .img-block img {
+	margin: 0 auto;
+	max-width: 1000px;
 }
 
 .project h2 {

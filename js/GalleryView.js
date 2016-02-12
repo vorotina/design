@@ -4,7 +4,7 @@ define(
         "../../node_modules/underscore/underscore",
         "../../node_modules/backbone/backbone",
         "../../node_modules/dot/doT",
-        "../../node_modules/text/text!../tpl/gallery_item.html"],
+        "../../node_modules/text/text!../tpl/gallery-item.html"],
 
     function($, _, Backbone, doT, galleryTemplate) {
 
@@ -16,26 +16,26 @@ define(
             events: {
                 "click .load-more": "render",
                 "click .load-less": "hideItems",
-                "click .load-full": "showItems"
+                "click .load-full": "showItems",
+                "click .view-more": "onViewMoreClicked"
             },
 
-            initialize: function(model) {
-                this.model = model;
+            initialize: function(scope) {
+                this.model = scope.model;
                 this.setElement(this.el);
                 _.bindAll(this, "render", "remove");
             },
 
             render: function() {
                 var j = 0,
-                    thumbs = this.model.thumbs,
+                    thumbs = this.model.get("thumbs"),
                     last = false;
 
-                debugger;
                 this.removeLoadMoreButton();
                 for (var i = 0; i < thumbs.length; i++) {
                     if (j < 4 && !thumbs[i].rendered) {
                         var compiled = doT.template(galleryTemplate);
-                        this.model.thumbs[i].rendered = true;
+                        this.model.attributes.thumbs[i].rendered = true;
                         $(this.el).append(compiled({id: i, path: thumbs[i].thumb, title: thumbs[i].title, description: thumbs[i].description}));
                         j++;
                     }
@@ -54,8 +54,8 @@ define(
             remove: function() {
                 $(this.el).find("figure").remove();
                 this.removeLoadMoreButton();
-                for (var i = 0; i < this.model.thumbs.length; i++) {
-                    this.model.thumbs[i].rendered = false;
+                for (var i = 0; i < this.model.get("thumbs").length; i++) {
+                    this.model.attributes.thumbs[i].rendered = false;
                 }
             }
         });

@@ -1,24 +1,23 @@
 <div class='project'>
 	<h2 class="clear">{{=it.title}}</h2>
 
-	<img src='{{=it.preview}}' width="600" />
-	{{? it.fullDescription }}
-		<p class>Описание:<p>
-		<p>{{=it.fullDescription}}</p>
-	{{?}}
+	<p class="list">
+		<a href='/#project/{{=it.prev}}' class="previous">Предыдущая</a>
+		<a href='/#project/{{=it.next}}' class="next">Сдедующая</a>
+	</p>
 
-	{{? it.website }}
-		<p class>Cайт:<p>
-		<p><a href="{{=it.website}}">{{=it.website}}</a></p>
-	{{?}}
+	{{~it.preview :value:index}}
+		{{? value.description }}
+			<p>{{=value.description}}</p>
+		{{?}}
+		<div class="img-block">
+			<img src='{{=value.src}}' />
+		</div>
+	{{~}}
 
-	{{? it.deadline }}
-		<p class>Сроки:<p>
-		<p>{{=it.deadline}}</p>
-	{{?}}
+	<p class="list">
+		<a href='/#project/{{=it.prev}}' class="previous">Предыдущая</a>
+		<a href='/#project/{{=it.nex}}' class="next">Сдедующая</a>
+	</p>
 
-	{{? it.price }}
-		<p class>Цена:<p>
-		<p>{{=it.price}}</p>
-	{{?}}
 </div>

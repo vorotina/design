@@ -11,16 +11,20 @@ define(
         var _ = this._;
 
         var View = Backbone.View.extend({
-
-            initialize: function(model) {
-                this.model = model;
+            initialize: function(scope) {
+                this.model = scope.model;
                 this.setElement(this.el);
                 _.bindAll(this, "render", "remove");
             },
 
-            render: function(elementId) {
+            render: function(router, elementId) {
+                this.router = router;
+                this.remove();
                 var about = doT.template(ProjectView);
-                $(".main-block").append(about(this.model.thumbs[elementId]));
+                var obj = this.model.attributes.thumbs[elementId];
+                obj.prev = parseInt(elementId) - 1;
+                obj.next = parseInt(elementId) + 1;
+                $(".main-block").append(about(obj));
             },
 
             remove: function() {
