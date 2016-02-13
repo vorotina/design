@@ -24,6 +24,20 @@ define(
 
                 var contacts = doT.template(contactsTemplate);
                 $(".main-block").append(contacts({}));
+
+                $(document).ready(function() {
+                    fadeMenuWrap();
+                    $(window).scroll(fadeMenuWrap);
+                });
+
+                function fadeMenuWrap() {
+                    var scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollPos > 300) {
+                        $(".back-on-top").fadeIn(300);
+                    } else {
+                        $(".back-on-top").fadeOut(300);
+                    }
+                }
             },
 
             remove: function() {

@@ -130,33 +130,6 @@ figure.effect-bubba:hover img {
 figure.effect-bubba:hover h2 {
 	display: block;
 }
-.top-panel ul li{
-	display: inline-block;
-	list-style:none;
-	line-height: 56px;
-	color: #c8c8c8;
-	text-decoration: none;
-	margin: 0 15px;
-	z-index: 21;
-}
-.top-panel ul li.active {
-	border-bottom: 1px solid #4c4c4c;
-}
-
-.top-panel ul li a {
-	color: #404142;
-}
-.top-panel ul li.active a {
-	color: #c8c8c8;
-	outline: none;
-}
-.top-panel ul li a:hover {
-	color: #c8c8c8;
-}
-.content > h2.clear {
-	margin: 0px;
-	padding: 20px;
-}
 .dark-block {
 	background: #171717;
 	padding: 15px 0;
@@ -224,16 +197,27 @@ textarea {
 }
 
 .load-more {
-	background: url('../img/ui/more.png') top center no-repeat;
-	width: 128px;
-	height: 128px;
+	width: 100%;
+	height: 33px;
 	display: table;
+	padding: 35px 0 55px 0;
+	clear: both;
+}
+
+.load-more .ico {
+	background: url('../img/ui/more.png') top center no-repeat;
+	display: block;
+	width: 55px;
+	height: 33px;
 	cursor: pointer;
+	background-size: 90% 90%;
+	-moz-opacity: 0.8;
+	opacity: 0.8;
 	margin: 0 auto;
 }
-.load-more:hover {
-	background-position: 0 -3px;
-	transition: background .1s ease-out;
+.load-more .ico:hover {
+	background-size: 96% 96%;
+	transition: .1s;
 }
 
 .inner-text {
@@ -374,7 +358,7 @@ figure.effect-bubba:hover h2 {
 }
 
 .top-panel ul li a {
-	color: #404142;
+	color: #858585;
 }
 .top-panel ul li.active a {
 	color: #c8c8c8;
@@ -480,21 +464,37 @@ textarea {
 
 
 .project .list.top a.next {
-	background: #313131 url('../img/ui/right.png') center center no-repeat;
-	background-size: 100% 100%;
-	padding: 5px 10px;
+	padding: 10px;
+	background: #313131;
 	text-decoration: none;
-	width: 30px;
-	height: 30px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.project .list.top a.next .ico {
+	background: url('../img/ui/right.png') center center no-repeat;
+	background-size: 100% 100%;
+	width: 10px;
+	height: 10px;
+	float: left;
 }
 
 .project .list.top a.previous {
-	background: #313131 url('../img/ui/left.png') center center no-repeat;
-	padding: 5px 10px;
+	background: #313131;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px;
 	text-decoration: none;
+}
+
+.project .list.top a.previous .ico {
+	background: url('../img/ui/left.png') center center no-repeat;
 	background-size: 100% 100%;
-	width: 30px;
-	height: 30px;
+	width: 10px;
+	height: 10px;
+	float: left;
 }
 
 .project .list.top .title {
@@ -536,7 +536,6 @@ textarea {
 
 .back-on-top {
 	background: #313131 url('../img/ui/top.png') center center no-repeat;
-	background-size: 100% 100%;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;

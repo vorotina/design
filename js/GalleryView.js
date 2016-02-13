@@ -44,7 +44,7 @@ define(
             },
 
             addLoadMoreButton: function() {
-                $(this.el).append("<div class='load-more'></div>");
+                $(this.el).append("<div class='load-more'><span class='ico'></span></div>");
             },
 
             removeLoadMoreButton: function() {
