@@ -8,33 +8,38 @@ require(
         var _ = this._;
         var self = this;
 
-		this.model = new GalleryModel();
-		var galleryView = new GalleryView(this);
-		var homeView = new HomeView();
-		var projectView = new ProjectView(this);
+        this.model = new GalleryModel();
+        var galleryView = new GalleryView(this);
+        var homeView = new HomeView();
+        var projectView = new ProjectView(this);
 
         // Routs
         var Router = Backbone.Router.extend({
             routes: {
                 "": "home",
-                "project/:id": "project"
+                "project/:id": "project",
+                "*contact": "contact"
             },
 
             home: function() {
                 galleryView.render();
-				homeView.render();
-				projectView.remove();
+                homeView.render();
+                projectView.remove();
             },
 
-			project: function(id) {
-				$(".top-menu li").removeClass("active");
-				galleryView.remove();
-				homeView.remove();
-				projectView.render(self.router, id);
+            project: function(id) {
+                $(".top-menu li").removeClass("active");
+                galleryView.remove();
+                homeView.remove();
+                projectView.render(self.router, id);
+            },
+
+            contact: function() {
+               alert('contact');
             }
         });
 
-		this.router = new Router();
+        this.router = new Router();
 
         Backbone.history.start();
 
@@ -43,9 +48,9 @@ require(
             var el = e.currentTarget;
             $(el).addClass("active");
             var pathname = "#" + $(el).find("a").data("pathname");
-			$("body,html").animate({
-				scrollTop: $(pathname).offset().top
-			}, 700);
+            $("body,html").animate({
+                scrollTop: $(pathname).offset().top
+            }, 700);
         });
 
         $(".back-on-top").click(function(e) {

@@ -13,6 +13,10 @@ define(
 
         var View = Backbone.View.extend({
 
+            events: {
+                "click .contact-submit": "onSendClicked"
+            },
+
             initialize: function() {
                 this.setElement(this.el);
                 _.bindAll(this, "render", "remove");
@@ -38,6 +42,12 @@ define(
                         $(".back-on-top").fadeOut(300);
                     }
                 }
+            },
+
+            onSendClicked: function() {
+                var app = express();
+                var router = express.Router();
+
             },
 
             remove: function() {
