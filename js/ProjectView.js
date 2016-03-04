@@ -22,8 +22,8 @@ define(
                 this.remove();
                 var about = doT.template(ProjectView);
                 var obj = this.model.attributes.thumbs[elementId];
-                obj.prev = parseInt(elementId) - 1;
-                obj.next = parseInt(elementId) + 1;
+                obj.prev = (parseInt(elementId) !== 0) ? parseInt(elementId) - 1 : 0;
+                obj.next = (parseInt(elementId) !== 31) ? parseInt(elementId) + 1 : 31;
                 $(".main-block").append(about(obj));
             },
 
